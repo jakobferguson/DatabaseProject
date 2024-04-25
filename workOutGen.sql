@@ -7,5 +7,3 @@ CREATE TABLE IF NOT EXISTS user (
   goal_macros INTEGER,
   PRIMARY KEY (`userID`)
 );
-
-bad code
