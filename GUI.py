@@ -4,20 +4,22 @@ from tkinter import messagebox
 
 bg_color = "RoyalBlue1"
 def show_view_screen():
+    global view_screen
+    main_screen.destroy()
     view_screen = tk.Toplevel()
     view_screen.title("View Screen")
     view_screen.geometry('800x600')  # Set the size of the window to be much larger
     tk.Label(
        view_screen, 
         text = "View Menu",
-        bg = bg_color,
-        fg = "white",
+        bg = "white",
+        fg = "black",
         font =("TkMenuFont", 14)
         ).pack()
-    # Create eight buttons with commands and pack them in the window
-    button1 = tk.Button(view_screen, text="Button 1", command=lambda: print("Button 1 Pressed"))
-    button2 = tk.Button(view_screen, text="Button 2", command=lambda: print("Button 2 Pressed"))
-    button3 = tk.Button(view_screen, text="Button 3", command=lambda: print("Button 3 Pressed"))
+    # Create 3 buttons with commands and pack them in the window
+    button1 = tk.Button(view_screen, text="Search by keyword", command=lambda: print("Button 1 Pressed"), bg = bg_color, fg = "white")
+    button2 = tk.Button(view_screen, text="Search for exercise Instructions", command=lambda: print("Button 2 Pressed"), bg = bg_color, fg = "white")
+    button3 = tk.Button(view_screen, text="Back", command=leave_view, bg = bg_color, fg = "white")
 
 
     # Arrange buttons in a grid or pack them
@@ -27,24 +29,26 @@ def show_view_screen():
 
     view_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
 def show_delete_screen():
+    global delete_screen
+    main_screen.destroy()
     delete_screen = tk.Toplevel()
     delete_screen.title("Delete Screen")
     delete_screen.geometry('800x600')  # Set the size of the window to be much larger
     tk.Label(
        delete_screen, 
         text = "Delete Menu",
-        bg = bg_color,
-        fg = "white",
+        bg = "white",
+        fg = "black",
         font =("TkMenuFont", 14)
         ).pack()
-    # Create eight buttons with commands and pack them in the window
-    button1 = tk.Button(delete_screen, text="Button 1", command=lambda: print("Button 1 Pressed"))
-    button2 = tk.Button(delete_screen, text="Button 2", command=lambda: print("Button 2 Pressed"))
-    button3 = tk.Button(delete_screen, text="Button 3", command=lambda: print("Button 3 Pressed"))
-    button4 = tk.Button(delete_screen, text="Button 4", command=lambda: print("Button 4 Pressed"))
-    button5 = tk.Button(delete_screen, text="Button 5", command=lambda: print("Button 5 Pressed"))
-    button6 = tk.Button(delete_screen, text="Button 6", command=lambda: print("Button 6 Pressed"))
-    button7 = tk.Button(delete_screen, text="Button 6", command=lambda: print("Button 7 Pressed"))
+    # Create 7 buttons with commands and pack them in the window
+    button1 = tk.Button(delete_screen, text="Delete User Equipment", command=lambda: print("Button 1 Pressed"), bg = bg_color, fg = "white")
+    button2 = tk.Button(delete_screen, text="Delete Exercise", command=lambda: print("Button 2 Pressed"), bg = bg_color, fg = "white")
+    button3 = tk.Button(delete_screen, text="Remove exercise from workout", command=lambda: print("Button 3 Pressed"), bg = bg_color, fg = "white")
+    button4 = tk.Button(delete_screen, text="Delete Health Log", command=lambda: print("Button 4 Pressed"), bg = bg_color, fg = "white")
+    button5 = tk.Button(delete_screen, text="Delete Lift Log", command=lambda: print("Button 5 Pressed"), bg = bg_color, fg = "white")
+    button6 = tk.Button(delete_screen, text="Delete Account", command=lambda: print("Button 6 Pressed"), bg = bg_color, fg = "white")
+    button7 = tk.Button(delete_screen, text="Back", command=leave_delete, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
     buttons = [button1, button2, button3, button4, button5, button6, button7]
@@ -54,27 +58,29 @@ def show_delete_screen():
     delete_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
 
 def show_add_screen():
+    global add_screen
+    main_screen.destroy()
     add_screen = tk.Toplevel()
     add_screen.title("Add Screen")
     add_screen.geometry('800x600')  # Set the size of the window to be much larger
     tk.Label(
        add_screen, 
         text = "Add Menu",
-        bg = bg_color,
-        fg = "white",
+        bg = "white",
+        fg = "black",
         font =("TkMenuFont", 14)
         ).pack()
-    # Create eight buttons with commands and pack them in the window
-    button1 = tk.Button(add_screen, text="Button 1", command=lambda: print("Button 1 Pressed"))
-    button2 = tk.Button(add_screen, text="Button 2", command=lambda: print("Button 2 Pressed"))
-    button3 = tk.Button(add_screen, text="Button 3", command=lambda: print("Button 3 Pressed"))
-    button4 = tk.Button(add_screen, text="Button 4", command=lambda: print("Button 4 Pressed"))
-    button5 = tk.Button(add_screen, text="Button 5", command=lambda: print("Button 5 Pressed"))
-    button6 = tk.Button(add_screen, text="Button 6", command=lambda: print("Button 6 Pressed"))
-    button7 = tk.Button(add_screen, text="Button 7", command=lambda: print("Button 7 Pressed"))
-    button8 = tk.Button(add_screen, text="Button 8", command=lambda: print("Button 8 Pressed"))
-    button9 = tk.Button(add_screen, text="Button 9", command=lambda: print("Button 9 Pressed"))
-    button10 = tk.Button(add_screen, text="Button 10", command=lambda: print("Button 10 Pressed"))
+    # Create 10 buttons with commands and pack them in the window
+    button1 = tk.Button(add_screen, text="Update User Weight", command=lambda: print("Button 1 Pressed"), bg = bg_color, fg = "white")
+    button2 = tk.Button(add_screen, text="Update User Goal Weight", command=lambda: print("Button 2 Pressed"), bg = bg_color, fg = "white")
+    button3 = tk.Button(add_screen, text="Add Equipment", command=lambda: print("Button 3 Pressed"), bg = bg_color, fg = "white")
+    button4 = tk.Button(add_screen, text="Add User Equipment", command=lambda: print("Button 4 Pressed"), bg = bg_color, fg = "white")
+    button5 = tk.Button(add_screen, text="Add Exercise", command=lambda: print("Button 5 Pressed"), bg = bg_color, fg = "white")
+    button6 = tk.Button(add_screen, text="Add Muscle", command=lambda: print("Button 6 Pressed"), bg = bg_color, fg = "white")
+    button7 = tk.Button(add_screen, text="Create Workout", command=lambda: print("Button 7 Pressed"), bg = bg_color, fg = "white")
+    button8 = tk.Button(add_screen, text="Create Health Log", command=lambda: print("Button 8 Pressed"), bg = bg_color, fg = "white")
+    button9 = tk.Button(add_screen, text="Create Lift Log", command=lambda: print("Button 9 Pressed"), bg = bg_color, fg = "white")
+    button10 = tk.Button(add_screen, text="Back", command=leave_add, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
     buttons = [button1, button2, button3, button4, button5, button6, button7, button8, button9, button10]
@@ -84,6 +90,7 @@ def show_add_screen():
     add_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
 
 def show_main_screen():
+    global main_screen
     app.withdraw()
     main_screen = tk.Toplevel()
     main_screen.title("Main Screen")
@@ -91,15 +98,15 @@ def show_main_screen():
     tk.Label(
         main_screen, 
         text = "Main Menu",
-        bg = bg_color,
-        fg = "white",
+        bg = "white",
+        fg = "black",
         font =("TkMenuFont", 14)
         ).pack()
-    # Create eight buttons with commands and pack them in the window
-    button1 = tk.Button(main_screen, text="ADD STUFF", command= show_add_screen)
-    button2 = tk.Button(main_screen, text="DELETE STUFF", command=show_delete_screen)
-    button3 = tk.Button(main_screen, text="VIEW STUFF", command=show_view_screen)
-    button4 = tk.Button(main_screen, text="Close Program", command= on_closing_main_screen)
+    # Create 4 buttons with commands and pack them in the window
+    button1 = tk.Button(main_screen, text="ADD STUFF", command= show_add_screen, bg = bg_color, fg = "white")
+    button2 = tk.Button(main_screen, text="DELETE STUFF", command=show_delete_screen, bg = bg_color, fg = "white")
+    button3 = tk.Button(main_screen, text="VIEW STUFF", command=show_view_screen, bg = bg_color, fg = "white")
+    button4 = tk.Button(main_screen, text="Log out", command= logout, bg = bg_color, fg = "white")
     
     # Arrange buttons in a grid or pack them
     buttons = [button1, button2, button3, button4]
@@ -209,6 +216,21 @@ def setup_login_window():
 
     create_account_button = tk.Button(app, text="Create Account", command=setup_account_creation)
     create_account_button.grid(row=3, column=1)
+
+#go back to main 
+def leave_view():
+    view_screen.destroy()
+    show_main_screen()
+def leave_add():
+    add_screen.destroy()
+    show_main_screen()
+def leave_delete():
+    delete_screen.destroy()
+    show_main_screen()
+def logout():
+    main_screen.destroy()
+    setup_login_window()
+
 
 setup_login_window()
 app.mainloop()
