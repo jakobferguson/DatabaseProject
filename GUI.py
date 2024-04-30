@@ -20,7 +20,7 @@ def deleteliftLog():
     # Function to handle the deletion of the lifting log
     def submit_deletion():
         log_id = log_id_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
 
         # First, verify that the log entry exists
@@ -84,7 +84,7 @@ def addLiftingLog():
         reps = reps_entry.get()
         sets = sets_entry.get()
 
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             cur.execute("INSERT INTO lift_log (log_id, user_id, weight, reps, sets) VALUES (?, ?, ?, ?, ?)",
@@ -117,7 +117,7 @@ def deleteHealthLog():
     # Function to handle the deletion of the health log
     def submit_deletion():
         log_id = log_id_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
 
         # First, verify that the log entry exists
@@ -169,7 +169,7 @@ def addHealthLog():
         user_id = user_id_entry.get()
         weight = weight_entry.get()
 
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             cur.execute("INSERT INTO health_log (log_id, user_id, weight) VALUES (?, ?, ?)", 
@@ -208,7 +208,7 @@ def removeExcFromWorkout():
     def submit_removal():
         wid = wid_entry.get()
         exc_name = exc_name_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
 
         # First, verify that the exercise exists within the specified workout
@@ -266,7 +266,7 @@ def addExcToWorkout():
         reps = reps_entry.get()
         sets = sets_entry.get()
 
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
 
         # Verify that the exercise and workout exists
@@ -329,7 +329,7 @@ def createWorkout():
         user_id = user_id_entry.get()
         modifiable = 'no'  # User-created workouts aren't modifiable
 
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             cur.execute("INSERT INTO workout (w_name, type, wid, modifiable, user_id) VALUES(?,?,?,?,?)",
@@ -368,7 +368,7 @@ def viewExcInstructions():
     # Function to handle the fetching and display of instructions
     def get_instructions():
         exercise = exercise_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         query = "SELECT instruction FROM exercise WHERE exc_name = ?"
         cur.execute(query, (exercise,))
@@ -406,7 +406,7 @@ def addMuscle():
     def submit_muscle_usage():
         exc_name = exc_name_entry.get()
         muscle = muscle_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
 
         # First, check if the exercise exists in the 'exercise' table
@@ -451,7 +451,7 @@ def viewExcByType():
     # Function to handle the search and display results
     def search_exercises():
         keyword = keyword_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         query = """
         SELECT e.exc_name, e.instruction, e.type, e.eqp_name, m.muscle
@@ -492,7 +492,7 @@ def deleteExc():
     # Function to handle the deletion of exercise
     def submit_delete():
         exc_name = exc_name_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             # Verify the exercise exists
@@ -546,7 +546,7 @@ def addExc():
         xType = xType_entry.get()
         eqp_name = eqp_name_entry.get()
 
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
 
         # Check if the equipment exists if not empty
@@ -594,7 +594,7 @@ def deleteUserEqp():
     def delete_eqp():
         user_id = user_id_entry.get()
         eqp_name = eqp_name_entry.get()
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             # Check if the equipment exists for the user
@@ -636,7 +636,7 @@ def addUserEqp():
         user_id = user_id_entry.get()
         eqp_name = eqp_name_entry.get()
         # Connect to db
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             # Check if the equipment exists in the eqp table
@@ -679,7 +679,7 @@ def addEqp():
     def submit_eqp():
         eqp_name = eqp_name_entry.get()
         # Connect to db
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         try:
             cur.execute("INSERT INTO eqp(eqp_name) VALUES(?)", (eqp_name,))
@@ -716,7 +716,7 @@ def updateUserGoal():
         user_id = user_id_entry.get()
         new_goal = new_goal_entry.get()
         # Connect to db
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         # Make the update statement
         cur.execute("UPDATE user SET g_weight = ? WHERE user_id = ?", (new_goal, user_id))
@@ -752,7 +752,7 @@ def deleteAccount():
     def confirm_delete():
         user_id = user_id_entry.get()
         if messagebox.askyesno("Confirm", f"Are you sure you want to delete the account '{user_id}'? This action cannot be undone."):
-            con = db.connect("CS2300 PROJECT/tuple.db")
+            con = db.connect("tuple.db")
             cur = con.cursor()
             cur.execute("DELETE FROM user WHERE user_id = ?", (user_id,))
             if cur.rowcount == 0:
@@ -788,7 +788,7 @@ def updateUserWeight():
         user_id = user_id_entry.get()
         new_weight = new_weight_entry.get()
         # Connect to db
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         # Make the update statement
         cur.execute("UPDATE user SET weight = ? WHERE user_id = ?", (new_weight, user_id))
@@ -924,7 +924,7 @@ def on_closing_main_screen():
     app.destroy()
 #Login submission 
 def submit_login():
-    con = db.connect("CS2300 PROJECT/tuple.db")
+    con = db.connect("tuple.db")
     cur = con.cursor()
     try:
         user_id = entry_username.get()
@@ -987,7 +987,7 @@ def create_account():
     goal_macros = entry_goal_macros.get()
 
     # Connect to the database and insert the new user
-    con = db.connect("CS2300 PROJECT/tuple.db")
+    con = db.connect("tuple.db")
     cur = con.cursor()
     try:
         cur.execute("INSERT INTO user (user_id, password, full_name, weight, g_weight, g_macros) VALUES (?, ?, ?, ?, ?, ?)",
