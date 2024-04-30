@@ -6,7 +6,7 @@ then
     echo "sqlite3 could not be found, please install it first."
     exit 1
 fi
-
+python3 check_dependencies.py
 # Execute the SQL commands to create the database
 sqlite3 tuple.db < workOutGen.sql
 
