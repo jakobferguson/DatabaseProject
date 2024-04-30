@@ -821,10 +821,13 @@ def show_view_screen():
     button2 = tk.Button(view_screen, text="Search for exercise Instructions", command=viewExcInstructions, bg = bg_color, fg = "white")
     button3 = tk.Button(view_screen, text="Blank", command=("Button5 has been pressed"), bg = bg_color, fg = "white")
     button4 = tk.Button(view_screen, text="Blank", command=lambda:print("Button5 has been pressed"), bg = bg_color, fg = "white")
-    button5 = tk.Button(view_screen, text="Back", command=leave_view, bg = bg_color, fg = "white")
+    button5 = tk.Button(view_screen, text="View Max User Weight", command=display_max_weight, bg = bg_color, fg = "white")
+    button6 = tk.Button(view_screen, text="View Average User Weight", command=display_average_weight, bg = bg_color, fg = "white")
+    button7 = tk.Button(view_screen, text="View Min User Weight", command=display_min_weight, bg = bg_color, fg = "white")
+    button8 = tk.Button(view_screen, text="Back", command=leave_view, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
-    buttons = [button1, button2, button3, button4, button5]
+    buttons = [button1, button2, button3, button4, button5, button6, button7, button8]
     for i, button in enumerate(buttons, start=1):
         button.pack(pady=10)
 
@@ -1020,6 +1023,42 @@ def setup_login_window():
 
     create_account_button = tk.Button(app, text="Create Account", command=setup_account_creation)
     create_account_button.grid(row=3, column=1)
+
+def get_max_weight(db_path='tuple.db'):
+    conn = db.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT MAX(weight) FROM user")
+    max_weight = cursor.fetchone()[0]
+    conn.close()
+    return max_weight
+
+def get_min_weight(db_path='tuple.db'):
+    conn = db.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT MIN(weight) FROM user")
+    min_weight = cursor.fetchone()[0]
+    conn.close()
+    return min_weight
+
+def get_average_weight(db_path='tuple.db'):
+    conn = db.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT AVG(weight) FROM user")
+    average_weight = cursor.fetchone()[0]
+    conn.close()
+    return average_weight if average_weight else 0
+
+def display_max_weight():
+    max_weight = get_max_weight()
+    messagebox.showinfo("Maximum Weight", f"The maximum weight is {max_weight} lbs")
+
+def display_min_weight():
+    min_weight = get_min_weight()
+    messagebox.showinfo("Minimum Weight", f"The minimum weight is {min_weight} lbs")
+
+def display_average_weight():
+    avg_weight = get_average_weight()
+    messagebox.showinfo("Average Weight", f"The average weight is {avg_weight:.2f} lbs")
 
 #Back buttons/Logout
 def leave_view():
