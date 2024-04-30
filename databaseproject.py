@@ -3,7 +3,7 @@ from getpass import getpass
 
 
 def genTable():
-        con = db.connect("CS2300 PROJECT/tuple.db")
+        con = db.connect("tuple.db")
         cur = con.cursor()
         # Create user table
         command1 = """CREATE TABLE IF NOT EXISTS
