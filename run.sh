@@ -11,3 +11,5 @@ fi
 sqlite3 tuple.db < workOutGen.sql
 
 echo "Database created and initialized successfully."
+
+python3 GUI.py
