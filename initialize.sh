@@ -8,6 +8,6 @@ then
 fi
 
 # Execute the SQL commands to create the database
-sqlite3 mydatabase.db < workOutGen.sql
+sqlite3 tuple.db < workOutGen.sql
 
 echo "Database created and initialized successfully."
