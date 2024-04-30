@@ -1,10 +1,10 @@
 import tkinter as tk
 import sqlite3 as db
 from tkinter import messagebox, scrolledtext
-from databaseproject import genTable
+
 
 bg_color = "RoyalBlue1"
-genTable()
+
 #delete a lift log
 def deleteliftLog():
     # Create the delete lifting log window
