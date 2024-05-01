@@ -802,7 +802,128 @@ def updateUserWeight():
     # Button to submit the update
     submit_btn = tk.Button(update_window, text="Update Weight", command=submit_update)
     submit_btn.pack(pady=20)
-# The view Screen
+
+
+#Show admin screen
+def show_admin_screen():
+    global admin_screen
+    app.withdraw()
+    admin_screen = tk.Toplevel()
+    admin_screen.title("Admin Screen")
+    admin_screen.geometry('800x600')  # Set the size of the window to be much larger
+    tk.Label(
+        admin_screen, 
+        text = "Admin Menu",
+        bg = "white",
+        fg = "black",
+        font =("TkMenuFont", 14)
+        ).pack()
+    # Create 4 buttons with commands and pack them in the window
+    button1 = tk.Button(admin_screen, text="ADD STUFF", command= show_admin_add_screen, bg = bg_color, fg = "white")
+    button2 = tk.Button(admin_screen, text="DELETE STUFF", command=show_admin_delete_screen, bg = bg_color, fg = "white")
+    button3 = tk.Button(admin_screen, text="VIEW STUFF", command=show_admin_view_screen, bg = bg_color, fg = "white")
+    button4 = tk.Button(admin_screen, text="Log out", command= admin_logout, bg = bg_color, fg = "white")
+    
+    # Arrange buttons in a grid or pack them
+    buttons = [button1, button2, button3, button4]
+    for i, button in enumerate(buttons, start=1):
+        button.pack(pady=10)
+
+    admin_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+#Show admin add screen
+def show_admin_add_screen():
+    global admin_add_screen
+    admin_screen.destroy()
+    admin_add_screen = tk.Toplevel()
+    admin_add_screen.title("Add Screen")
+    admin_add_screen.geometry('800x600')  # Set the size of the window to be much larger
+    tk.Label(
+       admin_add_screen, 
+        text = "Add Menu",
+        bg = "white",
+        fg = "black",
+        font =("TkMenuFont", 14)
+        ).pack()
+    # Create 10 buttons with commands and pack them in the window
+    button1 = tk.Button(admin_add_screen, text="Update User Weight", command=updateUserWeight, bg = bg_color, fg = "white")
+    button2 = tk.Button(admin_add_screen, text="Update User Goal Weight", command=updateUserGoal, bg = bg_color, fg = "white")
+    button3 = tk.Button(admin_add_screen, text="Add Equipment", command=addEqp, bg = bg_color, fg = "white")
+    button4 = tk.Button(admin_add_screen, text="Add User Equipment", command=addUserEqp, bg = bg_color, fg = "white")
+    button5 = tk.Button(admin_add_screen, text="Add Exercise", command=addExc, bg = bg_color, fg = "white")
+    button6 = tk.Button(admin_add_screen, text="Add Muscle", command=addMuscle, bg = bg_color, fg = "white")
+    button7 = tk.Button(admin_add_screen, text="Create Workout", command=createWorkout, bg = bg_color, fg = "white")
+    button8 = tk.Button(admin_add_screen, text="Add an exercise to a workout", command=addExcToWorkout, bg = bg_color, fg = "white")
+    button9 = tk.Button(admin_add_screen, text="Create Health Log", command=addHealthLog, bg = bg_color, fg = "white")
+    button10 = tk.Button(admin_add_screen, text="Create Lift Log", command=addLiftingLog, bg = bg_color, fg = "white")
+    button11 = tk.Button(admin_add_screen, text="Back", command=leave_admin_add, bg = bg_color, fg = "white")
+
+    # Arrange buttons in a grid or pack them
+    buttons = [button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11]
+    for i, button in enumerate(buttons, start=1):
+        button.pack(pady=10)
+
+    admin_add_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+#show admin delete screen
+def show_admin_delete_screen():
+    global admin_delete_screen
+    admin_screen.destroy()
+    admin_delete_screen = tk.Toplevel()
+    admin_delete_screen.title("Delete Screen")
+    admin_delete_screen.geometry('800x600')  # Set the size of the window to be much larger
+    tk.Label(
+        admin_delete_screen, 
+        text = "Delete Menu",
+        bg = "white",
+        fg = "black",
+        font =("TkMenuFont", 14)
+        ).pack()
+    #Create 7 buttons with commands and pack them in the window
+    button1 = tk.Button(admin_delete_screen, text="Delete User Equipment", command=deleteUserEqp, bg = bg_color, fg = "white")
+    button2 = tk.Button(admin_delete_screen, text="Delete Exercise", command=deleteExc, bg = bg_color, fg = "white")
+    button3 = tk.Button(admin_delete_screen, text="Remove exercise from workout", command=removeExcFromWorkout, bg = bg_color, fg = "white")
+    button4 = tk.Button(admin_delete_screen, text="Delete Health Log", command=deleteHealthLog, bg = bg_color, fg = "white")
+    button5 = tk.Button(admin_delete_screen, text="Delete Lift Log", command=deleteliftLog, bg = bg_color, fg = "white")
+    button6 = tk.Button(admin_delete_screen, text="Delete Account", command=deleteAccount, bg = bg_color, fg = "white")
+    button7 = tk.Button(admin_delete_screen, text="Back", command=leave_admin_delete, bg = bg_color, fg = "white")
+
+    # Arrange buttons in a grid or pack them
+    buttons = [button1, button2, button3, button4, button5, button6, button7]
+    for i, button in enumerate(buttons, start=1):
+        button.pack(pady=10)
+
+    admin_delete_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+#show admin view screen
+def show_admin_view_screen():
+    global admin_view_screen
+    admin_screen.destroy()
+    admin_view_screen = tk.Toplevel()
+    admin_view_screen.title("View Screen")
+    admin_view_screen.geometry('800x600')  # Set the size of the window to be much larger
+    tk.Label(
+       admin_view_screen, 
+        text = "View Menu",
+        bg = "white",
+        fg = "black",
+        font =("TkMenuFont", 14)
+        ).pack()
+    # Create 3 buttons with commands and pack them in the window
+    button1 = tk.Button(admin_view_screen, text="Search by keyword", command=viewExcByType, bg = bg_color, fg = "white")
+    button2 = tk.Button(admin_view_screen, text="Search for exercise Instructions", command=viewExcInstructions, bg = bg_color, fg = "white")
+    button3 = tk.Button(admin_view_screen, text="Blank", command=("Button5 has been pressed"), bg = bg_color, fg = "white")
+    button4 = tk.Button(admin_view_screen, text="Blank", command=lambda:print("Button5 has been pressed"), bg = bg_color, fg = "white")
+    button5 = tk.Button(admin_view_screen, text="View Max User Weight", command=display_max_weight, bg = bg_color, fg = "white")
+    button6 = tk.Button(admin_view_screen, text="View Average User Weight", command=display_average_weight, bg = bg_color, fg = "white")
+    button7 = tk.Button(admin_view_screen, text="View Min User Weight", command=display_min_weight, bg = bg_color, fg = "white")
+    button8 = tk.Button(admin_view_screen, text="Back", command=leave_admin_view, bg = bg_color, fg = "white")
+
+    # Arrange buttons in a grid or pack them
+    buttons = [button1, button2, button3, button4, button5, button6, button7, button8]
+    for i, button in enumerate(buttons, start=1):
+        button.pack(pady=10)
+
+    admin_view_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+
+#The view Screen
 def show_view_screen():
     global view_screen
     main_screen.destroy()
@@ -848,20 +969,17 @@ def show_delete_screen():
         ).pack()
     #Create 7 buttons with commands and pack them in the window
     button1 = tk.Button(delete_screen, text="Delete User Equipment", command=deleteUserEqp, bg = bg_color, fg = "white")
-    button2 = tk.Button(delete_screen, text="Delete Exercise", command=deleteExc, bg = bg_color, fg = "white")
-    button3 = tk.Button(delete_screen, text="Remove exercise from workout", command=removeExcFromWorkout, bg = bg_color, fg = "white")
-    button4 = tk.Button(delete_screen, text="Delete Health Log", command=deleteHealthLog, bg = bg_color, fg = "white")
-    button5 = tk.Button(delete_screen, text="Delete Lift Log", command=deleteliftLog, bg = bg_color, fg = "white")
-    button6 = tk.Button(delete_screen, text="Delete Account", command=deleteAccount, bg = bg_color, fg = "white")
-    button7 = tk.Button(delete_screen, text="Back", command=leave_delete, bg = bg_color, fg = "white")
+    button2 = tk.Button(delete_screen, text="Remove exercise from workout", command=removeExcFromWorkout, bg = bg_color, fg = "white")
+    button3 = tk.Button(delete_screen, text="Delete Health Log", command=deleteHealthLog, bg = bg_color, fg = "white")
+    button4 = tk.Button(delete_screen, text="Delete Lift Log", command=deleteliftLog, bg = bg_color, fg = "white")
+    button5 = tk.Button(delete_screen, text="Back", command=leave_delete, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
-    buttons = [button1, button2, button3, button4, button5, button6, button7]
+    buttons = [button1, button2, button3, button4, button5]
     for i, button in enumerate(buttons, start=1):
         button.pack(pady=10)
 
     delete_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
-
 #add Screen menu
 def show_add_screen():
     global add_screen
@@ -879,18 +997,15 @@ def show_add_screen():
     # Create 10 buttons with commands and pack them in the window
     button1 = tk.Button(add_screen, text="Update User Weight", command=updateUserWeight, bg = bg_color, fg = "white")
     button2 = tk.Button(add_screen, text="Update User Goal Weight", command=updateUserGoal, bg = bg_color, fg = "white")
-    button3 = tk.Button(add_screen, text="Add Equipment", command=addEqp, bg = bg_color, fg = "white")
-    button4 = tk.Button(add_screen, text="Add User Equipment", command=addUserEqp, bg = bg_color, fg = "white")
-    button5 = tk.Button(add_screen, text="Add Exercise", command=addExc, bg = bg_color, fg = "white")
-    button6 = tk.Button(add_screen, text="Add Muscle", command=addMuscle, bg = bg_color, fg = "white")
-    button7 = tk.Button(add_screen, text="Create Workout", command=createWorkout, bg = bg_color, fg = "white")
-    button8 = tk.Button(add_screen, text="Add an exercise to a workout", command=addExcToWorkout, bg = bg_color, fg = "white")
-    button9 = tk.Button(add_screen, text="Create Health Log", command=addHealthLog, bg = bg_color, fg = "white")
-    button10 = tk.Button(add_screen, text="Create Lift Log", command=addLiftingLog, bg = bg_color, fg = "white")
-    button11 = tk.Button(add_screen, text="Back", command=leave_add, bg = bg_color, fg = "white")
+    button3 = tk.Button(add_screen, text="Add User Equipment", command=addUserEqp, bg = bg_color, fg = "white")
+    button4 = tk.Button(add_screen, text="Create Workout", command=createWorkout, bg = bg_color, fg = "white")
+    button5 = tk.Button(add_screen, text="Add an exercise to a workout", command=addExcToWorkout, bg = bg_color, fg = "white")
+    button6 = tk.Button(add_screen, text="Create Health Log", command=addHealthLog, bg = bg_color, fg = "white")
+    button7 = tk.Button(add_screen, text="Create Lift Log", command=addLiftingLog, bg = bg_color, fg = "white")
+    button8 = tk.Button(add_screen, text="Back", command=leave_add, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
-    buttons = [button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11]
+    buttons = [button1, button2, button3, button4, button5, button6, button7, button8]
     for i, button in enumerate(buttons, start=1):
         button.pack(pady=10)
 
@@ -935,6 +1050,9 @@ def submit_login():
         stored_password = cur.fetchone()
         if stored_password is None:
             messagebox.showwarning("Login Failed", "User is not found.")
+        elif password == "Admin123" and user_id == '911':
+            messagebox.showinfo("Admin Login Successful", "Welcome Admin!")
+            show_admin_screen()
         elif password == stored_password[0]:
             messagebox.showinfo("Login Successful", "Welcome!")
             show_main_screen()
@@ -1023,7 +1141,7 @@ def setup_login_window():
 
     create_account_button = tk.Button(app, text="Create Account", command=setup_account_creation)
     create_account_button.grid(row=3, column=1)
-
+#GET MAX FUNCS
 def get_max_weight(db_path='tuple.db'):
     conn = db.connect(db_path)
     cursor = conn.cursor()
@@ -1047,7 +1165,7 @@ def get_average_weight(db_path='tuple.db'):
     average_weight = cursor.fetchone()[0]
     conn.close()
     return average_weight if average_weight else 0
-
+#DISPLAY MAX FUNCS
 def display_max_weight():
     max_weight = get_max_weight()
     messagebox.showinfo("Maximum Weight", f"The maximum weight is {max_weight} lbs")
@@ -1072,6 +1190,22 @@ def leave_delete():
     show_main_screen()
 def logout():
     main_screen.destroy()
+    setup_login_window()
+#admin back buttons
+def leave_admin_add():
+    admin_add_screen.destroy()
+    show_admin_screen()
+
+def leave_admin_delete():
+    admin_delete_screen.destroy()
+    show_admin_screen()
+
+def leave_admin_view():
+    admin_view_screen.destroy()
+    show_admin_screen()
+
+def admin_logout():
+    admin_screen.destroy()
     setup_login_window()
 
 
