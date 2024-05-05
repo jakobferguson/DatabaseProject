@@ -1185,7 +1185,7 @@ def show_progress_graph():
     progress_window.geometry("500x500")
 
 
-    button = tk.Button(view_screen, text="Back", command=leave_graph, bg = bg_color, fg = "white")
+    button = tk.Button(progress_window, text="Back", command=leave_graph, bg = bg_color, fg = "white")
     button.pack(pady=10)
     main_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
 
