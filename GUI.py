@@ -1056,6 +1056,7 @@ def submit_login():
             show_admin_screen()
         elif password == stored_password[0]:
             messagebox.showinfo("Login Successful", "Welcome!")
+            global current_user = user_id
             show_main_screen()
         else:
             messagebox.showwarning("Login Failed", "Incorrect password.")
@@ -1190,6 +1191,15 @@ def show_progress_graph():
     # the figure that will contain the plot 
     fig = Figure(figsize = (5, 5), dpi = 100) 
   
+    #connect and get weights
+    db_path = 'tuple.db'
+    conn = db.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT weight FROM weights WHERE user_id = ?", (current_user,))
+    results = cursor.fetchall()
+    weight_list = [weight[0] for weight in results]
+    conn.close()
+
     # list of squares 
     y = [i**2 for i in range(101)] 
   
@@ -1197,7 +1207,7 @@ def show_progress_graph():
     plot1 = fig.add_subplot(111) 
   
     # plotting the graph 
-    plot1.plot(y) 
+    plot1.plot(weight_list) 
   
     # creating the Tkinter canvas 
     # containing the Matplotlib figure 
@@ -1288,8 +1298,8 @@ def leave_admin_view():
     show_admin_screen()
 
 def leave_admin_graph():
-    progress_window.destroy()
-    show_view_screen()
+    admin_progress_window.destroy()
+    show_admin_view_screen()
 
 def admin_logout():
     admin_screen.destroy()
