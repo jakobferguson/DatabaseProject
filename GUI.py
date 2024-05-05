@@ -1180,7 +1180,7 @@ def show_progress_graph():
     # Create the graph window
     global progress_window
     view_screen.destroy()
-    prgress_window = tk.Toplevel()
+    progress_window = tk.Toplevel()
     progress_window.title("Progress")
     progress_window.geometry("500x500")
 
@@ -1193,7 +1193,7 @@ def show_admin_progress_graph():
     # Create the graph window
     global admin_progress_window
     admin_view_screen.destroy()
-    admin_prgress_window = tk.Toplevel()
+    admin_progress_window = tk.Toplevel()
     admin_progress_window.title("Progress")
     admin_progress_window.geometry("500x500")
 
