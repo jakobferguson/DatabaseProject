@@ -1,6 +1,9 @@
 import tkinter as tk
 import sqlite3 as db
 from tkinter import messagebox, scrolledtext
+from matplotlib.figure import Figure 
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,  
+NavigationToolbar2Tk)
 
 bg_color = "RoyalBlue1"
 #delete a lift log
@@ -1198,14 +1201,14 @@ def show_progress_graph():
   
     # creating the Tkinter canvas 
     # containing the Matplotlib figure 
-    canvas = FigureCanvasTkAgg(fig, master = admin_progress_window)   
+    canvas = FigureCanvasTkAgg(fig, master = progress_window)   
     canvas.draw() 
   
     # placing the canvas on the Tkinter window 
     canvas.get_tk_widget().pack() 
   
     # creating the Matplotlib toolbar 
-    toolbar = NavigationToolbar2Tk(canvas, admin_progress_window) 
+    toolbar = NavigationToolbar2Tk(canvas, progress_window) 
     toolbar.update() 
   
     # placing the toolbar on the Tkinter window 
