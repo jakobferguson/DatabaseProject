@@ -916,7 +916,7 @@ def show_admin_view_screen():
     button8 = tk.Button(admin_view_screen, text="Back", command=leave_admin_view, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
-    buttons = [button1, button2, button3, button4, button5, button6, button7, button8]
+    buttons = [button1, button2, button4, button5, button6, button7, button8]
     for i, button in enumerate(buttons, start=1):
         button.pack(pady=10)
 
@@ -946,7 +946,7 @@ def show_view_screen():
     button8 = tk.Button(view_screen, text="Back", command=leave_view, bg = bg_color, fg = "white")
 
     # Arrange buttons in a grid or pack them
-    buttons = [button1, button2, button3, button4, button5, button6, button7, button8]
+    buttons = [button1, button2, button4, button5, button6, button7, button8]
     for i, button in enumerate(buttons, start=1):
         button.pack(pady=10)
 
