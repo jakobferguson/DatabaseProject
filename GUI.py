@@ -5,6 +5,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,  
 NavigationToolbar2Tk)
 
+current_user = ''
 bg_color = "RoyalBlue1"
 #delete a lift log
 def deleteliftLog():
@@ -1056,7 +1057,8 @@ def submit_login():
             show_admin_screen()
         elif password == stored_password[0]:
             messagebox.showinfo("Login Successful", "Welcome!")
-            global current_user = user_id
+            global current_user
+            current_user = user_id
             show_main_screen()
         else:
             messagebox.showwarning("Login Failed", "Incorrect password.")
