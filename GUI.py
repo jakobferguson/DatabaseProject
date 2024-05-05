@@ -1184,6 +1184,32 @@ def show_progress_graph():
     progress_window.title("Progress")
     progress_window.geometry("500x500")
 
+    # the figure that will contain the plot 
+    fig = Figure(figsize = (5, 5), dpi = 100) 
+  
+    # list of squares 
+    y = [i**2 for i in range(101)] 
+  
+    # adding the subplot 
+    plot1 = fig.add_subplot(111) 
+  
+    # plotting the graph 
+    plot1.plot(y) 
+  
+    # creating the Tkinter canvas 
+    # containing the Matplotlib figure 
+    canvas = FigureCanvasTkAgg(fig, master = admin_progress_window)   
+    canvas.draw() 
+  
+    # placing the canvas on the Tkinter window 
+    canvas.get_tk_widget().pack() 
+  
+    # creating the Matplotlib toolbar 
+    toolbar = NavigationToolbar2Tk(canvas, admin_progress_window) 
+    toolbar.update() 
+  
+    # placing the toolbar on the Tkinter window 
+    canvas.get_tk_widget().pack() 
 
     button = tk.Button(progress_window, text="Back", command=leave_graph, bg = bg_color, fg = "white")
     button.pack(pady=10)
@@ -1196,9 +1222,37 @@ def show_admin_progress_graph():
     admin_progress_window.title("Progress")
     admin_progress_window.geometry("500x500")
 
+    # the figure that will contain the plot 
+    fig = Figure(figsize = (5, 5), dpi = 100) 
+  
+    # list of squares 
+    y = [i**2 for i in range(101)] 
+  
+    # adding the subplot 
+    plot1 = fig.add_subplot(111) 
+  
+    # plotting the graph 
+    plot1.plot(y) 
+  
+    # creating the Tkinter canvas 
+    # containing the Matplotlib figure 
+    canvas = FigureCanvasTkAgg(fig, master = admin_progress_window)   
+    canvas.draw() 
+  
+    # placing the canvas on the Tkinter window 
+    canvas.get_tk_widget().pack() 
+  
+    # creating the Matplotlib toolbar 
+    toolbar = NavigationToolbar2Tk(canvas, admin_progress_window) 
+    toolbar.update() 
+  
+    # placing the toolbar on the Tkinter window 
+    canvas.get_tk_widget().pack() 
 
-    button8 = tk.Button(view_screen, text="Back", command=leave_admin_graph, bg = bg_color, fg = "white")
-    main_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+    button = tk.Button(admin_progress_window, text="Back", command=leave_admin_graph, bg = bg_color, fg = "white")
+    button.pack(pady=10)
+
+
 
 
 #Back buttons/Logout
