@@ -1197,19 +1197,26 @@ def show_progress_graph():
     db_path = 'tuple.db'
     conn = db.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute("SELECT weight FROM user WHERE user_id = ?", (current_user,))
+    cursor.execute("SELECT weight FROM health_log WHERE user_id = ?", (current_user,))
     results = cursor.fetchall()
-    weight_list = [weight[0] for weight in results]
+    y = [weight[0] for weight in results]
     conn.close()
-
-    # list of squares 
-    y = [i**2 for i in range(101)] 
   
     # adding the subplot 
-    plot1 = fig.add_subplot(111) 
-  
+    plot1 = fig.add_subplot(111, ylabel='Weight') 
+    x = []
+    for i in range(1,len(y)+1):
+        x.append(i)
+
     # plotting the graph 
-    plot1.plot(weight_list) 
+    plot1.plot(x, y) 
+
+    plot1.tick_params(
+    axis='x',          # changes apply to the x-axis
+    which='both',      # both major and minor ticks are affected
+    bottom=False,      # ticks along the bottom edge are off
+    top=False,         # ticks along the top edge are off
+    labelbottom=False)
   
     # creating the Tkinter canvas 
     # containing the Matplotlib figure 
@@ -1240,14 +1247,30 @@ def show_admin_progress_graph():
     # the figure that will contain the plot 
     fig = Figure(figsize = (5, 5), dpi = 100) 
   
-    # list of squares 
-    y = [i**2 for i in range(101)] 
+    #connect and get weights
+    db_path = 'tuple.db'
+    conn = db.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT weight FROM health_log WHERE user_id = ?", (current_user,))
+    results = cursor.fetchall()
+    y = [weight[0] for weight in results]
+    conn.close()
   
     # adding the subplot 
-    plot1 = fig.add_subplot(111) 
-  
+    plot1 = fig.add_subplot(111, ylabel='Weight') 
+    x = []
+    for i in range(1,len(y)+1):
+        x.append(i)
+
     # plotting the graph 
-    plot1.plot(y) 
+    plot1.plot(x, y) 
+
+    plot1.tick_params(
+    axis='x',          # changes apply to the x-axis
+    which='both',      # both major and minor ticks are affected
+    bottom=False,      # ticks along the bottom edge are off
+    top=False,         # ticks along the top edge are off
+    labelbottom=False)
   
     # creating the Tkinter canvas 
     # containing the Matplotlib figure 
@@ -1262,7 +1285,7 @@ def show_admin_progress_graph():
     toolbar.update() 
   
     # placing the toolbar on the Tkinter window 
-    canvas.get_tk_widget().pack() 
+    canvas.get_tk_widget().pack()
 
     button = tk.Button(admin_progress_window, text="Back", command=leave_admin_graph, bg = bg_color, fg = "white")
     button.pack(pady=10)
