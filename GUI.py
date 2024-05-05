@@ -1197,7 +1197,7 @@ def show_progress_graph():
     db_path = 'tuple.db'
     conn = db.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute("SELECT weight FROM weights WHERE user_id = ?", (current_user,))
+    cursor.execute("SELECT weight FROM user WHERE user_id = ?", (current_user,))
     results = cursor.fetchall()
     weight_list = [weight[0] for weight in results]
     conn.close()
