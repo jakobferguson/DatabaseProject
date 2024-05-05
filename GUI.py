@@ -1185,7 +1185,7 @@ def show_progress_graph():
     view_screen.destroy()
     progress_window = tk.Toplevel()
     progress_window.title("Progress")
-    progress_window.geometry("500x500")
+    progress_window.geometry("500x800")
 
     # the figure that will contain the plot 
     fig = Figure(figsize = (5, 5), dpi = 100) 
@@ -1223,7 +1223,7 @@ def show_admin_progress_graph():
     admin_view_screen.destroy()
     admin_progress_window = tk.Toplevel()
     admin_progress_window.title("Progress")
-    admin_progress_window.geometry("500x500")
+    admin_progress_window.geometry("500x800")
 
     # the figure that will contain the plot 
     fig = Figure(figsize = (5, 5), dpi = 100) 
