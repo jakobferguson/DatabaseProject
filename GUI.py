@@ -909,8 +909,7 @@ def show_admin_view_screen():
     # Create 3 buttons with commands and pack them in the window
     button1 = tk.Button(admin_view_screen, text="Search by keyword", command=viewExcByType, bg = bg_color, fg = "white")
     button2 = tk.Button(admin_view_screen, text="Search for exercise Instructions", command=viewExcInstructions, bg = bg_color, fg = "white")
-    button3 = tk.Button(admin_view_screen, text="Blank", command=("Button5 has been pressed"), bg = bg_color, fg = "white")
-    button4 = tk.Button(admin_view_screen, text="Blank", command=lambda:print("Button5 has been pressed"), bg = bg_color, fg = "white")
+    button4 = tk.Button(admin_view_screen, text="Weight Progress", command=show_admin_progress_graph, bg = bg_color, fg = "white")
     button5 = tk.Button(admin_view_screen, text="View Max User Weight", command=display_max_weight, bg = bg_color, fg = "white")
     button6 = tk.Button(admin_view_screen, text="View Average User Weight", command=display_average_weight, bg = bg_color, fg = "white")
     button7 = tk.Button(admin_view_screen, text="View Min User Weight", command=display_min_weight, bg = bg_color, fg = "white")
@@ -940,8 +939,7 @@ def show_view_screen():
     # Create 3 buttons with commands and pack them in the window
     button1 = tk.Button(view_screen, text="Search by keyword", command=viewExcByType, bg = bg_color, fg = "white")
     button2 = tk.Button(view_screen, text="Search for exercise Instructions", command=viewExcInstructions, bg = bg_color, fg = "white")
-    button3 = tk.Button(view_screen, text="Blank", command=("Button5 has been pressed"), bg = bg_color, fg = "white")
-    button4 = tk.Button(view_screen, text="Blank", command=lambda:print("Button5 has been pressed"), bg = bg_color, fg = "white")
+    button4 = tk.Button(view_screen, text="Weight Progress", command=show_progress_graph, bg = bg_color, fg = "white")
     button5 = tk.Button(view_screen, text="View Max User Weight", command=display_max_weight, bg = bg_color, fg = "white")
     button6 = tk.Button(view_screen, text="View Average User Weight", command=display_average_weight, bg = bg_color, fg = "white")
     button7 = tk.Button(view_screen, text="View Min User Weight", command=display_min_weight, bg = bg_color, fg = "white")
@@ -1178,7 +1176,35 @@ def display_average_weight():
     avg_weight = get_average_weight()
     messagebox.showinfo("Average Weight", f"The average weight is {avg_weight:.2f} lbs")
 
+def show_progress_graph():
+    # Create the graph window
+    global progress_window
+    view_screen.destroy()
+    prgress_window = tk.Toplevel()
+    progress_window.title("Progress")
+    progress_window.geometry("500x500")
+
+
+    button8 = tk.Button(view_screen, text="Back", command=leave_graph, bg = bg_color, fg = "white")
+    main_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+
+def show_admin_progress_graph():
+    # Create the graph window
+    global admin_progress_window
+    admin_view_screen.destroy()
+    admin_prgress_window = tk.Toplevel()
+    admin_progress_window.title("Progress")
+    admin_progress_window.geometry("500x500")
+
+
+    button8 = tk.Button(view_screen, text="Back", command=leave_admin_graph, bg = bg_color, fg = "white")
+    main_screen.protocol("WM_DELETE_WINDOW", on_closing_main_screen)
+
+
 #Back buttons/Logout
+def leave_graph():
+    progress_window.destroy()
+    show_view_screen()
 def leave_view():
     view_screen.destroy()
     show_main_screen()
@@ -1203,6 +1229,10 @@ def leave_admin_delete():
 def leave_admin_view():
     admin_view_screen.destroy()
     show_admin_screen()
+
+def leave_admin_graph():
+    progress_window.destroy()
+    show_view_screen()
 
 def admin_logout():
     admin_screen.destroy()
